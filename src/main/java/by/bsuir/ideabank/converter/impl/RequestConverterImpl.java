@@ -19,6 +19,9 @@ public class RequestConverterImpl implements RequestConverter {
 
     @Override
     public RequestDTO convertToDTO(Request request) {
+        if (request == null) {
+            return new RequestDTO();
+        }
         RequestDTO requestDTO = new RequestDTO();
         requestDTO.setId(request.getId());
         requestDTO.setUser(userConverter.convertToDTO(request.getUser()));
@@ -40,6 +43,9 @@ public class RequestConverterImpl implements RequestConverter {
 
     @Override
     public Request convertToEntity(RequestDTO requestDTO) {
+        if (requestDTO == null) {
+            return new Request();
+        }
         Request request = new Request();
         request.setId(requestDTO.getId());
         request.setUser(userConverter.convertToEntity(requestDTO.getUser()));
